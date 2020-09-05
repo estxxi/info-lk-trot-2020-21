@@ -1,5 +1,5 @@
 -- Liste, aber selbstgemacht
-data MyList a = Empty | Node a (MyList a)
+data MyList a = Empty | Node a (MyList a) deriving Show
 
 empty = Empty
 
@@ -13,11 +13,9 @@ myEnd Empty = error "List empty"
 myEnd (Node x Empty) = x
 myEnd (Node x xs) = myEnd xs
 
--- will nicht ausgeben, unklar
-myMap f Empty = Empty 
+myMap f Empty = Empty
 myMap f (Node x xs) =  (Node (f x) (myMap f xs))
 
--- will nicht ausgeben, unklar
 myFilter p Empty = Empty
 myFilter p (Node x xs) | p x = (Node x (myFilter p xs))
                        | otherwise = myFilter p xs
