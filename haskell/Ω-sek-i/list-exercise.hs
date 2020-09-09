@@ -13,11 +13,10 @@ quadlist (x:xs) = x^2:(quadlist (xs))
 quadlistA ::  [Int] -> [Int]
 quadlistA [] = [] 
 quadlistA (x:xs) = sklave (x:xs) []
-	where 
-		sklave [] akku = akku
-		sklave (x:xs) akku = (sklave xs) (x^2 : akku)
-		
-	
+    where sklave [] akku = akku
+          sklave (x:xs) akku = (sklave xs) (x^2 : akku)
+
+
 istEnthalten :: [Int] -> Int -> Bool
 istEnthalten [] z = False
 istEnthalten (x:xs) z = if x==z then True else istEnthalten (xs) z

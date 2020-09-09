@@ -14,6 +14,7 @@ popStack (Node x xs) = xs
 topStack EmptyStack          = error "popStack: empty arg"
 topStack (Node x xs)         = x
 
+
 -- Stack als Liste
 l_emptyStack = []
 

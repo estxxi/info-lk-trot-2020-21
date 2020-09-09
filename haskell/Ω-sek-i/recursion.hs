@@ -30,23 +30,23 @@ mul a b = a + mul a (b-1)
 --ggt a b -> größter gemeinsamer Teiler von a und b 
 ggt :: Int->Int->Int
 ggt a b | a==b = a
-		| a>b = ggt (a-b) b
-		| otherwise = ggt b a 
-		
+        | a>b = ggt (a-b) b
+        | otherwise = ggt b a 
+
 ggt2 :: Int->Int->Int
 ggt2 a b | a>b = ggt2 b a
-		 | a==0 = b
-		 |otherwise = ggt2 (b `mod` a) a
-		 
+         | a==0 = b
+         |otherwise = ggt2 (b `mod` a) a
+
 
 --Endrekursion (vermeidet den Speicherbedarf)
 --letzter Berrechnungsschritt ist der rekursive aufruf der Funktion
 
 summeE :: Int -> Int
 summeE n = sklave n 0
-	where
-		sklave 0 akku = akku
-		sklave n akku = sklave (n-1) (akku + n)
+    where
+        sklave 0 akku = akku
+        sklave n akku = sklave (n-1) (akku + n)
 -- summeE 4 -> Sklave 4 0
 --          -> sklave 3 (0+4) -> sklave 3 4
 --          -> sklave 2 (4+3) -> sklave 2 7 

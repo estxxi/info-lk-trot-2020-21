@@ -35,9 +35,11 @@ gleicherOrt (a,b,c) (d,e,f) = b==e
 
 --newtype baut einen eigenen Datentypen
 newtype Name2 = N String -- N ist ein Konstruktor
-	deriving Show --Name2 gehört zur Typklasse Show
+    deriving Show --Name2 gehört zur Typklasse Show
+
 newtype Ort2 = O String -- O auch
 instance Show Ort2 where -- in der Typklasse Show
-	show (O ort) = "Ort:" ++ (show ort) -- wird neue show-fkt instanziert
+    show (O ort) = "Ort:" ++ (show ort) -- wird neue show-fkt instanziert
+
 name1 = N "Klaus"
-ort1 = O "Berlin"	
+ort1 = O "Berlin"

@@ -17,16 +17,18 @@ headQueue EmptyQueue  = error "head: empty arg"
 headQueue (Node xs x) = x
 
 -- Queue als Liste
-emptySnek = []
+l_emptyQueue = []
 
-isEmptySnek [] = True
-isEmptySnek (x:xs) = False
+l_isEmptyQueue [] = True
+l_isEmptyQueue (x:xs) = False
 
-ensnek x []     = [x] 
-ensnek x (y:ys) = (y : (ensnek x ys))
+l_enqueue x []     = [x] 
+l_enqueue x (y:ys) = (y : (l_enqueue x ys))
 
-desnek (x:xs) = xs
+l_dequeue xs = dequeueHelp xs (l_isEmptyQueue xs)
+         where dequeueHelp xs True      = error "dequeue: empty queue"
+               dequeueHelp (x:xs) False = xs
 
-headSnek xs = headSnekhelp xs (isEmptySnek xs)
-          where headSnekhelp xs True      = error "headsnek: empty snek" 
-                headSnekhelp (x:xs) False = x  
+l_headQueue xs = headQueuehelp xs (l_isEmptyQueue xs)
+           where headQueuehelp xs True      = error "headqueue: empty queue" 
+                 headQueuehelp (x:xs) False = x
