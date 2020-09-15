@@ -28,6 +28,7 @@ insert el xs = insertHelp el xs (isEl el xs)
          where insertHelp el xs True = xs
                insertHelp el xs False = el:xs
 
+remove el [] = []
 remove el (x:xs) | el == x = xs
                  | otherwise = x : (remove el xs)
 
