@@ -26,7 +26,6 @@ isEl el (x:xs) | el == x = True
 
 insert el xs = insertHelp el xs (isEl el xs)
          where insertHelp el xs True = xs
-               insertHelp el [] False = [el]
                insertHelp el xs False = el:xs
 
 remove el (x:xs) | el == x = xs
