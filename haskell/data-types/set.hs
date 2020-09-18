@@ -7,7 +7,7 @@
 -- insert :: a -> Set(a) -> Set(a)
 -- remove :: a -> Set(a) -> Set(a) (kann auch eine partielle Funktion sein)
 
--- Axiome: (Nummerierung unklar, Auswahl halbwegs von Trot bestätigt)
+-- Axiome:
 -- isEmpty empty = True
 -- isEmpty (insert a set) = False
 -- isEl a (insert a set) = True
