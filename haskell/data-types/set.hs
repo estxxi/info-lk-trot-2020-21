@@ -7,7 +7,7 @@
 -- insert :: a -> Set(a) -> Set(a)
 -- remove :: a -> Set(a) -> Set(a) (kann auch eine partielle Funktion sein)
 
--- Axiome: (Nummerierung unklar, Auswahl halbwegs von Trot bestätigt)
+-- Axiome:
 -- isEmpty empty = True
 -- isEmpty (insert a set) = False
 -- isEl a (insert a set) = True
@@ -26,9 +26,9 @@ isEl el (x:xs) | el == x = True
 
 insert el xs = insertHelp el xs (isEl el xs)
          where insertHelp el xs True = xs
-               insertHelp el [] False = [el]
                insertHelp el xs False = el:xs
 
+remove el [] = []
 remove el (x:xs) | el == x = xs
                  | otherwise = x : (remove el xs)
 
