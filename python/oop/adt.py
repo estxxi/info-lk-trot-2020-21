@@ -1,5 +1,3 @@
-# Set macht Probleme
-
 class MyStack:
     def __init__(self):
         self.__myStack = []
