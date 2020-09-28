@@ -29,7 +29,7 @@ headQueue ([], []) = error "dequeue: Queue empty"
 headQueue (backs, []) = headQueue (backs, (reshuffle (backs, [])))
 headQueue (backs, (x:fronts)) = x
 
--- 2. Fastqueue als abstrakter Datentyp (Stack)
+-- 2. Fastqueue als algebraischer Datentyp (Stack)
 data Stack a = EmptyStack | Node a (Stack a) deriving Show
 
 emptyStack = EmptyStack
