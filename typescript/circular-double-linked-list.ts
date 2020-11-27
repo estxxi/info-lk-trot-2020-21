@@ -59,17 +59,41 @@ class D_List<T>{
             this._length++;
         }
     }
+    insert_index(value : T, index : number){
+        let node : D_Knoten<T> = this.first;
+        this._length++;
+        if(index > (this._length / 2)){
+            index = this._length - index;
+            do{
+                node = node.before;
+                index--;
+            }while(index != 0)
+            let newNode = new D_Knoten<T>(node,node.after,value);
+            node.after.before = newNode;
+            node.after = newNode;
+            
+        } else {
+            while(index != 0){
+                node = node.after;
+                index--;
+            }
+            let newNode = new D_Knoten<T>(node,node.after,value);
+            node.after.before = newNode;
+            node.after = newNode;
+        }
+
+    }
     at(index : number) : T{
         let node : D_Knoten<T> = this.first;
         if(index >= this._length){
             throw Error("Index out of bounds")
         }
         if(index > (this._length / 2)){
-            index--;
-            while(index != 0){
+            index = this._length - index;
+            do{
                 node = node.before;
                 index--;
-            }
+            }while(index != 0)
             return node.value;
         } else {
             while(index != 0){
@@ -94,4 +118,5 @@ class D_List<T>{
 }
 
 let l = new D_List<number>([1,4,6,465,746,84]);
+l.insert_index(3,2);
 console.log(l.to_string());
