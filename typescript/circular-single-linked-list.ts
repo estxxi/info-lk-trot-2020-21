@@ -27,8 +27,9 @@ class MyNode<G>{
 
 class MyRing<G>{
     // current is first
-    // Als Maskierung für MyNode implementieren (.next udn .value nicht direkt aufrufen)
+    // Als Maskierung für MyNode implementieren (.next und .value nicht direkt aufrufen)
     current: MyNode<G> = new MyNode<G>();
+    length: number = 1;
 
     constructor(currentval: G) {
         this.current.setNext(this.current);
@@ -44,6 +45,7 @@ class MyRing<G>{
             i.setNext(new_node);
             new_node.setNext(this.current);
             new_node.setValue(myval);
+            length++;
         }
         else {
             return this.insert(new_node, myval, i.next);
@@ -71,6 +73,13 @@ class MyRing<G>{
             return this.show(i.next, out + ', ' + i.value.toString())
         }
     }
+
+    indexAccess(index: number, save: MyNode<G> = this.current): G {
+        for (let i = 0; i < index % length; i++) {
+            save = save.next;
+        }
+        return save.value;
+    }
 }
 
 let a: MyRing<number> = new MyRing<number>(0);
@@ -86,3 +95,10 @@ console.log(el.next.value);
 
 a.current.value = 109000
 console.log(a.show())
+
+console.log(a.indexAccess(0))
+console.log(a.indexAccess(1))
+console.log(a.indexAccess(2))
+console.log(a.indexAccess(9))
+console.log(a.indexAccess(10))
+console.log(a.indexAccess(11))
