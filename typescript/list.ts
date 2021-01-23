@@ -1,6 +1,6 @@
-class MyNode<G>{
+class ListNode<G>{
     value: G;
-    next: MyNode<G> = null;
+    next: ListNode<G> = null;
     constructor(g?: G){
         if (g) {
             this.value = g;
@@ -9,7 +9,7 @@ class MyNode<G>{
             this.value = null;
         }
     }
-    setNext(k: MyNode<G>): void{
+    setNext(k: ListNode<G>): void{
         this.next=k;
     }
     setValue(v: G): void {
@@ -18,8 +18,8 @@ class MyNode<G>{
 }
 
 class MyList<G> {
-    root: MyNode<G> = new MyNode<G>();
-    insert(k: MyNode<G>): void {
+    root: ListNode<G> = new ListNode<G>();
+    insert(k: ListNode<G>): void {
         k.setNext(this.root);
         this.root = k;
     }
@@ -28,7 +28,7 @@ class MyList<G> {
     }
     // last funktioniert so nicht.
     last(): G {
-        let current: MyNode<G> = this.root;
+        let current: ListNode<G> = this.root;
         while (current.next!=null){
             console.log(current.value+" - "+current.next);
             if (current.value!=null){
@@ -40,11 +40,11 @@ class MyList<G> {
 }
 
 let list: MyList<number> = new MyList<number>();
-let k: MyNode<number> = new MyNode<number>(1);
+let k: ListNode<number> = new ListNode<number>(1);
 
 list.insert(k);
-list.insert(new MyNode<number>(2));
-list.insert(new MyNode<number>(3));
+list.insert(new ListNode<number>(2));
+list.insert(new ListNode<number>(3));
 
 
 console.log(list.last());

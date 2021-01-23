@@ -1,7 +1,7 @@
-class MyNode<G>{
+class RingNode<G>{
     value: G;
-    next: MyNode<G>;
-    constructor(val?: G, mynext?: MyNode<G>){
+    next: RingNode<G>;
+    constructor(val?: G, mynext?: RingNode<G>){
         if (val) {
             this.value = val;
         }
@@ -20,15 +20,15 @@ class MyNode<G>{
         this.value = val;
     }
 
-    setNext(mynext: MyNode<G>): void{
+    setNext(mynext: RingNode<G>): void{
         this.next = mynext;
     }
 }
 
 class MyRing<G>{
     // current is first
-    // Als Maskierung für MyNode implementieren (.next und .value nicht direkt aufrufen)
-    current: MyNode<G> = new MyNode<G>();
+    // Als Maskierung für RingNode implementieren (.next und .value nicht direkt aufrufen)
+    current: RingNode<G> = new RingNode<G>();
     length: number = 1;
 
     constructor(currentval: G) {
@@ -36,11 +36,11 @@ class MyRing<G>{
         this.current.setValue(currentval);
     }
 
-    setNodeValue(sel_node: MyNode<G>, myval: G): void {
+    setNodeValue(sel_node: RingNode<G>, myval: G): void {
         sel_node.setValue(myval);
     }
 
-    insert(new_node: MyNode<G>, myval: G, i: MyNode<G> = this.current): void {
+    insert(new_node: RingNode<G>, myval: G, i: RingNode<G> = this.current): void {
         if (i.next === this.current) {
             i.setNext(new_node);
             new_node.setNext(this.current);
@@ -56,7 +56,7 @@ class MyRing<G>{
         return this.current.next.value;
     }
 
-    last(i: MyNode<G> = this.current): G {
+    last(i: RingNode<G> = this.current): G {
         if (i.next === this.current) {
             return i.value;
         }
@@ -65,7 +65,7 @@ class MyRing<G>{
         }
     }
 
-    show(i: MyNode<G> = this.current, out: string = this.current.value.toString()):string {
+    show(i: RingNode<G> = this.current, out: string = this.current.value.toString()):string {
         if (i.next === this.current){
             return out + ', ' + i.value.toString();
         }
@@ -74,7 +74,7 @@ class MyRing<G>{
         }
     }
 
-    indexAccess(index: number, save: MyNode<G> = this.current): G {
+    indexAccess(index: number, save: RingNode<G> = this.current): G {
         for (let i = 0; i < index % length; i++) {
             save = save.next;
         }
@@ -83,10 +83,10 @@ class MyRing<G>{
 }
 
 let a: MyRing<number> = new MyRing<number>(0);
-let el: MyNode<number> = new MyNode<number>();
+let el: RingNode<number> = new RingNode<number>();
 
 for (let i = 2; i < 10; i++){
-    a.insert(new MyNode<number>(), i)
+    a.insert(new RingNode<number>(), i)
 }
 
 a.insert(el, 100);
