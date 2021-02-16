@@ -9,5 +9,5 @@ insertList (Node l c r) []     = Node l c r
 insertList (Node l c r) (x:xs) = insertList (insert x (Node l c r)) xs
 
 makeTree [] = EmptyTree
-makeTree xs = foldr (insert) EmptyTree xs
+makeTree xs = foldr insert EmptyTree xs
 

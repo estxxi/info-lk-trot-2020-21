@@ -1,4 +1,7 @@
 /.vscode/
 *.json
+!/typescript/hangman-trot/package.json
+!/typescript/hangman-trot/tsconfig.json
+!/typescript/hangman-trot/.vscode/lanch.json
 typescript/.devcontainer/Dockerfile
 /out/
